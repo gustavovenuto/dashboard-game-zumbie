@@ -52,30 +52,32 @@ export default function Ranking (){
                 loading ?
                 <Loader type="spinner-circle" bgColor={"#FFFFFF"} title={"Atualizando..."} color={'#FFFFFF'} size={100} />
                 :
-                <Table striped bordered hover style={{width: "50%"}}>
-                    <thead>
-                        <tr>
-                            <th style={{color: "#fff"}}>#</th>
-                            <th style={{color: "#fff"}}>Nome</th>
-                            <th style={{color: "#fff"}}>Pontuaçao</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            valueList.map((item, index) => {
-                                return(
-                                    <tr>
-                                    <td style={{color: "#fff"}}>{index+1}</td>
-                                    <td style={{color: "#fff"}}>{item.nome}</td>
-                                    <td style={{color: "#fff"}}>{item.pontos}</td>
-                                </tr> 
-                                )
-                            })
-                        }
-                    </tbody>
-                </Table>
+                <div style={{height: "60vh", overflow: "auto",width: "50%"}}>
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th style={{color: "#fff"}}>#</th>
+                                <th style={{color: "#fff"}}>Nome</th>
+                                <th style={{color: "#fff"}}>Pontuaçao</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                valueList.map((item, index) => {
+                                    return(
+                                        <tr>
+                                        <td style={{color: "#fff"}}>{index+1}</td>
+                                        <td style={{color: "#fff"}}>{item.nome}</td>
+                                        <td style={{color: "#fff"}}>{item.pontos}</td>
+                                    </tr> 
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </Table>
+                </div>
             }
-            <div style={{flexDirection: 'row'}}>
+            <div style={{flexDirection: 'row', marginTop: 15}}>
                 <Button variant="primary" onClick={() => getList()}>
                     Atualizar
                 </Button>

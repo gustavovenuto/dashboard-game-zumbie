@@ -78,6 +78,9 @@ export default function Ranking (){
             <Button variant="primary" onClick={() => getList()}>
                 Atualizar
             </Button>
+            <Button variant="Warning" onClick={() => getList()}>
+                Game
+            </Button>
         </div>
     )
 }

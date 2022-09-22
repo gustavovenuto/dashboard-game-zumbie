@@ -1,32 +1,22 @@
 import db from '../utils/firebaseUtils';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getDatabase, ref, onValue} from "firebase/database";
 
 export default class FirebaseService {
     static getDataList = (nodePath, callback) => {
-        console.log('caiu aqui');
-        console.log(nodePath)
-
-
-        const citiesCol = collection(db, 'ranking');
-        const citySnapshot = getDocs(citiesCol)
-        console.log(citySnapshot);
-       /*  let query = db.ref('ranking');
-
-        console.log(query);
-
-
-        query.on('value', dataSnapshot => {
-            let items = [];
-            dataSnapshot.forEach(childSnapshot => {
-                let item = childSnapshot.val();
-                console.log(item);
-                item['key'] = childSnapshot.key;
-                items.push(item);
-            });
-            callback(items);
-        }); */
-
-        return citiesCol;
+        const dbs = getDatabase();
+        const starCountRef = ref(dbs, 'ranking');
+        let data = [];
+        onValue(starCountRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+            data.push({
+                'nome':`${childSnapshot.key}`,
+                'pontos':`${childSnapshot.val()}`
+            })
+        });
+         console.log(data)
+        });
+        return data;
     };
 
 }

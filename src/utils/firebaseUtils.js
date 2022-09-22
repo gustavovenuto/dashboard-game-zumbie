@@ -18,15 +18,5 @@ const firebaseConfig = {
 
 const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore(app);
-console.log('aopaaa');
-
-const collectionData = collection(db, "ranking");
-
-const teste = async () => {
-    const teste2 = await getDocs(collectionData);
-}
-
-console.log(teste);
-
 
 export default db;

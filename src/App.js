@@ -7,9 +7,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Ranking />
-        <div style={{marginTop: 15}}>
-          <button>Atualizar</button>
-        </div>
       </header>
     </div>
   );

@@ -75,12 +75,14 @@ export default function Ranking (){
                     </tbody>
                 </Table>
             }
-            <Button variant="primary" onClick={() => getList()}>
-                Atualizar
-            </Button>
-            <Button variant="Warning" onClick={() => getList()}>
-                Game
-            </Button>
+            <div style={{flexDirection: 'row'}}>
+                <Button variant="primary" onClick={() => getList()}>
+                    Atualizar
+                </Button>
+                <Button style={{marginLeft: 15}} variant="warning" onClick={() => window.location.href = 'https://clever-meerkat-59a1eb.netlify.app/'}>
+                    Game
+                </Button>
+            </div>
         </div>
     )
 }
